@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Broken/unused components
+src/components/ui/rich-text-editor.tsx
+src/components/ui/rich-text-editor-control.tsx
+src/components/ui/rich-text-editor-context.tsx
