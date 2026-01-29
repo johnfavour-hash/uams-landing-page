@@ -31,11 +31,10 @@ const ResourcesSection = () => {
                             borderRadius="md"
                             p={6}
                             whileHover={{ y: -10, boxShadow: "xl" }}
-                            transition={{ duration: 0.3 } as any}
+                            transition={{ duration: 0.3, delay: idx * 0.1 } as any}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            delay={idx * 0.1}
                         >
                             <Box bg="#E0F7FA" mb={6} borderRadius="sm" overflow="hidden" display="flex" justifyContent="center" alignItems="center" h="180px">
                                 <Image src={res.image} alt={res.title} maxH="140px" objectFit="contain" />
