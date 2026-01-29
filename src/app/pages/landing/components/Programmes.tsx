@@ -105,7 +105,7 @@ const Programmes = () => {
                                 <ChevronRight size={24} />
                             </IconButton>
                         </Flex>
-                    </Box>
+                    </MotionBox>
                 </VStack>
             </Container>
         </Box>
