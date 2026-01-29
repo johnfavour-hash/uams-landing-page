@@ -24,7 +24,7 @@ const MotionBox = motion(Box);
 
 const Programmes = () => {
     return (
-        <Box py={{ base: 10, md: 16 }}>
+        <Box py={{ base: 10, md: 16 }} bg="white">
             <Container maxW="container.xl">
                 <VStack align="stretch" gap={8}>
 
