@@ -1,15 +1,15 @@
 import { Box, Flex, Heading, Text, Stack, Image, Container } from "@chakra-ui/react";
-import { Circle } from "lucide-react";
+import { CircleDot } from "lucide-react";
 import { motion } from "framer-motion";
 
-const LIBRARY_IMG = "/images/5ed7d0d339dcca3293a16471198e6e0fd0d1bb46.jpg";
+const LIBRARY_IMG = "/images/28efe5d2b49d90b5dbeeca9c4965f70da3420edb.jpg";
 
 const MotionBox = motion(Box);
 const MotionFlex = motion(Flex);
 
 const LibrarySection = () => {
     return (
-        <Box overflow="hidden">
+        <Box overflow="hidden" bg="white">
             <Flex direction={{ base: "column", lg: "row" }} minH={{ base: "auto", lg: "500px" }}>
 
                 <MotionBox
@@ -25,7 +25,7 @@ const LibrarySection = () => {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                     <Container maxW="lg" px={{ base: 6, md: 8 }}>
-                        <Text color="#40C4FF" fontWeight="bold" fontSize="sm" letterSpacing="wide" textTransform="uppercase" mb={2} textAlign={{ base: "center", lg: "left" }}>
+                        <Text color="#2AB0E8" fontWeight="bold" fontSize="xl" letterSpacing="wide" textTransform="uppercase" mb={2} textAlign={{ base: "center", lg: "left" }}>
                             LIBRARY
                         </Text>
                         <Heading as="h2" size={{ base: "xl", md: "2xl" }} mb={6} lineHeight="short" textAlign={{ base: "center", lg: "left" }}>
@@ -39,7 +39,7 @@ const LibrarySection = () => {
                         <Stack gap={4}>
                             {[
                                 "Extensive Collections with over 700,000 books, journals, and multimedia materials.",
-                                "Numerous Research centers and spaces for postgraduate students",
+                                "Numerous Research centers and spaces for postgraduate students and researchers",
                                 "Advanced Digital Resources with Online Access (OPAC) and institutional repositories"
                             ].map((item, idx) => (
                                 <MotionFlex
@@ -52,7 +52,7 @@ const LibrarySection = () => {
                                     transition={{ delay: 0.5 + (idx * 0.1), duration: 0.5 }}
                                 >
                                     <Box mt={1} flexShrink={0}>
-                                        <Circle size={10} fill="#F6AD55" color="#F6AD55" />
+                                        <CircleDot size={20} color="#EC9A29" />
                                     </Box>
                                     <Text fontSize="sm">{item}</Text>
                                 </MotionFlex>

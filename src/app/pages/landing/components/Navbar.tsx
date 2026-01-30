@@ -10,6 +10,7 @@ import {
     IconButton,
     Stack,
 } from "@chakra-ui/react";
+import { toaster } from "@components/ui/toaster";
 import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -19,6 +20,15 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => setIsOpen(!isOpen);
+
+    const handleComingSoon = (e: React.MouseEvent) => {
+        e.preventDefault();
+        toaster.create({
+            title: "Coming Soon",
+            description: "This page is currently under development.",
+            type: "info",
+        });
+    };
 
     const navLinks = ["Home", "About", "Research", "Collaborations", "Admissions", "Updates"];
 
@@ -35,7 +45,7 @@ const Navbar = () => {
                     {/* Desktop Nav Links */}
                     <HStack gap={8} display={{ base: "none", lg: "flex" }}>
                         {navLinks.map((item) => (
-                            <Link key={item} href="#" color="gray.600" _hover={{ color: "blue.500" }} fontSize="sm" fontWeight="medium">
+                            <Link key={item} href="#" color="gray.600" _hover={{ color: "#2AB0E8" }} fontSize="sm" fontWeight="medium" onClick={handleComingSoon}>
                                 {item}
                             </Link>
                         ))}
@@ -48,13 +58,15 @@ const Navbar = () => {
                         </IconButton>
                         <Button
                             colorScheme="cyan"
-                            bg="#40C4FF"
+                            bg="#2AB0E8"
+
                             color="white"
                             size={{ base: "xs", md: "sm" }}
                             px={{ base: 4, md: 6 }}
-                            borderRadius="sm"
-                            _hover={{ bg: "cyan.500" }}
+                            borderRadius="none"
+                            _hover={{ bg: "#2AB0E8" }}
                             display={{ base: "none", sm: "inline-flex" }}
+                            onClick={handleComingSoon}
                         >
                             Training Courses
                         </Button>
@@ -73,13 +85,14 @@ const Navbar = () => {
             </Container>
 
             {/* Admission Bar (Now below the header) */}
-            <Box bg="#40C4FF" py={2}>
+            <Box bg="#4CC5F5" py={2}>
+
                 <Container maxW="container.xl">
                     <Flex justify="center" align="center" gap={2} fontSize={{ base: "xs", md: "sm" }} color="white" flexWrap="wrap">
                         <Text textAlign="center">
                             Admission for the January 2026 academic session is ongoing.
                         </Text>
-                        <Link href="#" fontWeight="bold" textDecoration="underline">
+                        <Link href="#" fontWeight="bold" textDecoration="underline" color="white" onClick={handleComingSoon}>
                             Apply Now!
                         </Link>
                     </Flex>
@@ -103,7 +116,7 @@ const Navbar = () => {
                 >
                     <Stack gap={4} py={4}>
                         {navLinks.map((item) => (
-                            <Link key={item} href="#" fontSize="md" fontWeight="medium" color="gray.700" onClick={() => setIsOpen(false)}>
+                            <Link key={item} href="#" fontSize="md" fontWeight="medium" color="gray.700" onClick={(e) => { setIsOpen(false); handleComingSoon(e); }}>
                                 {item}
                             </Link>
                         ))}
@@ -111,8 +124,8 @@ const Navbar = () => {
                             bg="#40C4FF"
                             color="white"
                             w="100%"
-                            borderRadius="sm"
-                            onClick={() => setIsOpen(false)}
+                            borderRadius="none"
+                            onClick={(e) => { setIsOpen(false); handleComingSoon(e); }}
                         >
                             Apply Now
                         </Button>

@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 import About from "./components/About";
@@ -9,12 +8,10 @@ import LatestNews from "./components/LatestNews";
 import LibrarySection from "./components/LibrarySection";
 import ResourcesSection from "./components/ResourcesSection";
 import NewsletterSection from "./components/NewsletterSection";
-import Footer from "./components/Footer";
 
 const LandingPage = () => {
   return (
-    <Box>
-      <Navbar />
+    <Box bg="white">
       <Hero />
       <Stats />
       <About />
@@ -24,7 +21,6 @@ const LandingPage = () => {
       <LibrarySection />
       <ResourcesSection />
       <NewsletterSection />
-      <Footer />
     </Box>
   );
 };

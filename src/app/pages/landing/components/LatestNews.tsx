@@ -9,15 +9,16 @@ import {
     HStack,
     Center,
 } from "@chakra-ui/react";
+import { toaster } from "@components/ui/toaster";
 import { Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 
-const NEWS_IMG_1 = "/images/28efe5d2b49d90b5dbeeca9c4965f70da3420edb.jpg";
-const NEWS_IMG_2 = "/images/9fe8123bf096fa28cc19d4f2d1fac4d7a661e8c2.jpg";
-const NEWS_IMG_3 = "/images/28180bf9101f054d63ce4ccc8bf83f1679459f9b.jpg";
-const NEWS_IMG_4 = "/images/5ed7d0d339dcca3293a16471198e6e0fd0d1bb46.jpg";
-const NEWS_IMG_5 = "/images/9119b908eb579b6080ef684b2b162d57e4d549b0.jpg";
-const NEWS_IMG_6 = "/images/1674211baaaa404517eb9568df8471f36160c5b9.jpg";
+const NEWS_IMG_1 = "/images/5ed7d0d339dcca3293a16471198e6e0fd0d1bb46.jpg";
+const NEWS_IMG_2 = "/images/3941bb7f924ec837957d353f2bb7fe7c091f261d.png";
+const NEWS_IMG_3 = "/images/1674211baaaa404517eb9568df8471f36160c5b9.jpg";
+const NEWS_IMG_4 = "/images/9119b908eb579b6080ef684b2b162d57e4d549b0.jpg";
+const NEWS_IMG_5 = "/images/9fe8123bf096fa28cc19d4f2d1fac4d7a661e8c2.jpg";
+const NEWS_IMG_6 = "/images/28180bf9101f054d63ce4ccc8bf83f1679459f9b.jpg";
 
 const newsItems = [
     {
@@ -61,14 +62,21 @@ const newsItems = [
 const MotionBox = motion(Box);
 
 const LatestNews = () => {
+    const handleComingSoon = () => {
+        toaster.create({
+            title: "Coming Soon",
+            description: "Detailed news articles will be available soon.",
+            type: "info",
+        });
+    };
     return (
-        <Box py={20} bg="white">
+        <Box py={20} bg="#F7FAFC">
             <Container maxW="container.xl">
                 <Box mb={12}>
-                    <Heading as="h2" size="xl" color="#003366" mb={2}>
+                    <Heading as="h3" size="2xl" color="#154A99" mb={2}>
                         Latest News and Features
                     </Heading>
-                    <Text color="gray.600">
+                    <Text color="#000000">
                         Read the news and updates from across the University
                     </Text>
                 </Box>
@@ -77,35 +85,38 @@ const LatestNews = () => {
                     {newsItems.map((item, idx) => (
                         <MotionBox
                             key={idx}
-                            borderRadius="md"
+                            borderRadius="none"
                             overflow="hidden"
-                            boxShadow="sm"
+                            boxShadow="rgba(0, 0, 0, 0.05) 0px 4px 12px"
                             bg="white"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 0.5 } as any}
-                            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            transition={{ delay: idx * 0.1, duration: 0.5 }}
+                            whileHover={{ y: -5, boxShadow: "rgba(0, 0, 0, 0.1) 0px 10px 20px", transition: { duration: 0.2 } }}
                         >
-                            <Image
-                                src={item.image}
-                                alt={item.title}
-                                h="200px"
-                                w="100%"
-                                objectFit="cover"
-                            />
-                            <Box p={6}>
-                                <Heading size="md" color="#003366" mb={3} lineHeight="shorter">
+                            <Box p={4}>
+                                <Image
+                                    src={item.image}
+                                    alt={item.title}
+                                    h="350px"
+                                    w="100%"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                />
+                            </Box>
+                            <Box px={4} pb={6} pt={2}>
+                                <Heading size="md" color="#154A99" mb={3} lineHeight="shorter">
                                     {item.title}
                                 </Heading>
-                                <HStack fontSize="xs" color="gray.500" mb={3}>
+                                <HStack fontSize="xs" color="#000000" mb={3}>
                                     <Calendar size={14} />
                                     <Text>{item.date}</Text>
                                 </HStack>
-                                <Text fontSize="sm" color="gray.600" lineClamp={3} mb={4}>
+                                <Text fontSize="sm" color="#000000" lineClamp={3} mb={4}>
                                     {item.excerpt}
                                 </Text>
-                                <Button size="sm" bg="#003366" color="white" _hover={{ bg: "blue.800" }} borderRadius="sm">
+                                <Button size="sm" bg="#2AB0E8" color="white" _hover={{ bg: "#2AB0E8" }} borderRadius="none" onClick={handleComingSoon}>
                                     Read More
                                 </Button>
                             </Box>
@@ -114,7 +125,7 @@ const LatestNews = () => {
                 </SimpleGrid>
 
                 <Center>
-                    <Button bg="#40C4FF" color="white" px={8} borderRadius="sm" _hover={{ bg: "cyan.500", transform: "scale(1.05)" }}>
+                    <Button bg="#2AB0E8" color="white" px={8} borderRadius="none" _hover={{ bg: "#2AB0E8", transform: "scale(1.05)" }} onClick={handleComingSoon}>
                         Read More News
                     </Button>
                 </Center>

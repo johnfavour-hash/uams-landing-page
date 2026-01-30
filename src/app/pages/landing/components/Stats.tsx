@@ -37,17 +37,17 @@ const Stats = () => {
                             key={index}
                             bg="white"
                             p={8}
-                            borderRadius="md"
+                            borderRadius="none"
                             boxShadow="sm"
                             textAlign="center"
                             whileHover={{ y: -10, boxShadow: "lg" }}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.5 } as any}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
                         >
                             <VStack gap={2}>
-                                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="#005a87">
+                                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="#154A99">
                                     <Counter target={stat.target} suffix={stat.suffix} />
                                 </Text>
                                 <Text fontSize="sm" color="gray.600">

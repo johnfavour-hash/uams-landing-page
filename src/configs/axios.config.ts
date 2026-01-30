@@ -27,10 +27,15 @@ const isPublicEndpoint = (url: string = ''): boolean => {
   );
 };
 
+interface ErrorResponse {
+  message?: string;
+  errors?: Array<{ field: string; message: string }>;
+}
+
 // Helper functions
-const getErrorMessage = (error: any): string => {
+const getErrorMessage = (error: AxiosError<unknown>): string => {
   if (error.response?.data) {
-    const { message, errors } = error.response.data;
+    const { message, errors } = error.response.data as ErrorResponse;
 
     if (errors && Array.isArray(errors) && errors.length > 0) {
       return errors.map(err => `${err.field}: ${err.message}`).join(', ');

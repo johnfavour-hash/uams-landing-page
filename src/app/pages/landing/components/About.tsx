@@ -1,4 +1,5 @@
 import { Box, Container, Flex, Heading, Text, Button, Image, Stack, VStack } from "@chakra-ui/react";
+import { toaster } from "@components/ui/toaster";
 import { motion } from "framer-motion";
 
 const ABOUT_IMG = "/images/3941bb7f924ec837957d353f2bb7fe7c091f261d (1).png";
@@ -7,6 +8,13 @@ const MotionBox = motion(Box);
 const MotionFlex = motion(Flex);
 
 const About = () => {
+    const handleComingSoon = () => {
+        toaster.create({
+            title: "Coming Soon",
+            description: "Our full institution story is on the way!",
+            type: "info",
+        });
+    };
     return (
         <Box py={{ base: 12, md: 20 }} bg="white" overflow="hidden">
             <Container maxW="container.xl">
@@ -34,11 +42,11 @@ const About = () => {
                         <Image
                             src={ABOUT_IMG}
                             alt="University Building"
-                            borderRadius="lg"
+                            borderRadius="none"
                             objectFit="cover"
                             w="100%"
                             h={{ base: "250px", md: "400px" }}
-                            boxShadow="xl"
+
                         />
                     </MotionBox>
 
@@ -51,10 +59,11 @@ const About = () => {
                         }}
                     >
                         <VStack align={{ base: "center", lg: "flex-start" }} gap={6} textAlign={{ base: "center", lg: "left" }}>
-                            <Text color="#40C4FF" fontWeight="bold" fontSize="sm" letterSpacing="wide" textTransform="uppercase">
+                            <Text color="#2AB0E8" fontWeight="bold" fontSize="lg" letterSpacing="wide" textTransform="uppercase">
                                 About Us
                             </Text>
-                            <Heading as="h2" size={{ base: "xl", md: "2xl" }} color="#003366">
+                            <Heading as="h3" size={{ base: "2xl", md: "3xl" }} color="#0C426F">
+
                                 Uniport At A Glance
                             </Heading>
 
@@ -63,7 +72,7 @@ const About = () => {
                                     Founded in 1975, the University of Port Harcourt (UNIPORT) is a second-generation Federal University located in the Niger-Delta region of Nigeria with over 50,000 students and a strong focus in Petroleum Engineering.
                                 </Text>
                                 <Text>
-                                    Formerly known as University College, Port Harcourt, UNIPORT has been ranked amongst the <Text as="span" fontStyle="italic" fontWeight="medium">Top Ten Universities in Africa</Text> and as the first in Nigeria by Times Higher Education (THE).
+                                    Formerly known as University College, Port Harcourt, UNIPORT has been ranked amongst the <Text as="span" fontStyle="italic" fontWeight="medium">Top Ten Universities in Africa</Text> and as the first in Nigeria by Times Higher Education (THE); a UK-based source for higher education information.
                                 </Text>
                             </Stack>
 
@@ -72,9 +81,10 @@ const About = () => {
                                 color="white"
                                 size="lg"
                                 px={8}
-                                borderRadius="sm"
-                                _hover={{ bg: "cyan.500", transform: "translateY(-2px)" }}
+                                borderRadius="none"
+                                _hover={{ bg: "#2AB0E8", transform: "translateY(-2px)" }}
                                 transition="all 0.2s"
+                                onClick={handleComingSoon}
                             >
                                 Read More
                             </Button>

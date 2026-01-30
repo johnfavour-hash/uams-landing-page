@@ -26,12 +26,14 @@ const Hero = () => {
 
     return (
         <Box
+            id="hero"
             position="relative"
             h={{ base: "450px", md: "600px" }}
             overflow="hidden"
             display="flex"
             alignItems="center"
             justifyContent="center"
+            bg="#003366"
         >
             {/* Background Images with Fade Transition */}
             {HERO_IMAGES.map((img, index) => (
@@ -74,14 +76,15 @@ const Hero = () => {
                         bg="white"
                         px={{ base: 4, md: 8 }}
                         py={{ base: 3, md: 4 }}
-                        borderRadius="sm"
+                        borderRadius="none"
                         boxShadow="lg"
                         w={{ base: "full", sm: "auto" }}
                         initial={{ x: -50, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.6 }}
                     >
-                        <Heading as="h1" size={{ base: "lg", md: "xl" }} color="#005a87" textTransform="uppercase" letterSpacing="wide">
+                        <Heading as="h1" size={{ base: "lg", md: "xl" }} color="#0C426F"
+                            textTransform="uppercase" letterSpacing="wide">
                             Building the Next Generation
                         </Heading>
                     </MotionBox>
@@ -90,14 +93,14 @@ const Hero = () => {
                         bg="white"
                         px={{ base: 4, md: 8 }}
                         py={{ base: 3, md: 4 }}
-                        borderRadius="sm"
+                        borderRadius="none"
                         boxShadow="lg"
                         w={{ base: "full", sm: "auto" }}
                         initial={{ x: 50, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.6 }}
                     >
-                        <Heading as="h2" size={{ base: "lg", md: "xl" }} color="#005a87">
+                        <Heading as="h2" size={{ base: "lg", md: "xl" }} color="#0C426F">
                             of <Text as="span" fontWeight="bold">Technology Experts</Text>
                         </Heading>
                     </MotionBox>
@@ -119,8 +122,8 @@ const Hero = () => {
                                 key={index}
                                 w={3}
                                 h={3}
-                                borderRadius="full"
-                                bg={index === currentImageIndex ? "#40C4FF" : "whiteAlpha.600"}
+                                borderRadius="100%"
+                                bg={index === currentImageIndex ? "#2AB0E8" : "whiteAlpha.600"}
                                 border="1px solid white"
                                 cursor="pointer"
                                 onClick={() => setCurrentImageIndex(index)}

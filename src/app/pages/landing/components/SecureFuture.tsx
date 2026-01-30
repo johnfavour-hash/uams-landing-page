@@ -1,5 +1,6 @@
 import { Box, Button, Container, Flex, Heading, Stack, Image, Text } from "@chakra-ui/react";
-import { CheckCircle } from "lucide-react";
+import { toaster } from "@components/ui/toaster";
+import { BadgePercent } from "lucide-react";
 import { motion } from "framer-motion";
 
 const STUDENT_IMG = "/images/44ff80138d7e107798f043b8426e57d7a0f08f32.png";
@@ -8,6 +9,20 @@ const MotionBox = motion(Box);
 const MotionFlex = motion(Flex);
 
 const SecureFuture = () => {
+    const handleComingSoon = () => {
+        toaster.create({
+            title: "Coming Soon",
+            description: "Registration for our training programs will open shortly.",
+            type: "info",
+        });
+    };
+    const features = [
+        { text: "Up to 100% Discount on Training Fees", icon: BadgePercent },
+        { text: "Tutor-Led Training at an Affordable Rate", icon: BadgePercent },
+        { text: "6-12 Months Access to Labs & Study Materials", icon: BadgePercent },
+        { text: "Earn Globally Recognized Certifications", icon: BadgePercent }
+    ];
+
     return (
         <Box bg="#154A99" py={{ base: 12, md: 16 }} position="relative" overflow="hidden">
             <Container maxW="container.xl">
@@ -22,18 +37,17 @@ const SecureFuture = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <Heading as="h2" size={{ base: "xl", md: "2xl" }} mb={6}>
-                            Secure Your Future in Tech Now!!!
+                        <Heading as="h3" size={{ base: "2xl", md: "3xl" }} mb={-2}>
+                            Secure Your Future in
                         </Heading>
 
-                        <Box bg="white" borderRadius="md" p={{ base: 4, md: 6 }} color="gray.800" mb={8} maxW="lg" mx={{ base: "auto", md: "0" }}>
+                        <Heading as="h3" size={{ base: "2xl", md: "3xl" }} mb={6}>
+                            Tech Now!!!
+                        </Heading>
+
+                        <Box bg="#EBFFFF" borderRadius="12px" p={{ base: 4, md: 6 }} color="gray.800" mb={8} maxW="lg" mx={{ base: "auto", md: "0" }}>
                             <Stack gap={4} align={{ base: "flex-start" }}>
-                                {[
-                                    "Up to 100% Discount on Training Fees",
-                                    "Tutor-Led Training at an Affordable Rate",
-                                    "6-12 Months Access to Labs & Study Materials",
-                                    "Earn Globally Recognized Certifications"
-                                ].map((item, i) => (
+                                {features.map((item, i) => (
                                     <MotionFlex
                                         key={i}
                                         align="start"
@@ -43,23 +57,25 @@ const SecureFuture = () => {
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.3 + (i * 0.1) }}
                                     >
-                                        <Box as={CheckCircle} color="#40C4FF" mt={1} flexShrink={0} />
-                                        <Text fontSize={{ base: "sm", md: "md" }} textAlign="left">{item}</Text>
+                                        <Box as={item.icon} color="#000000" mt={1} flexShrink={0} />
+                                        <Text fontSize={{ base: "sm", md: "md" }} textAlign="left" color="#000000">{item.text}</Text>
                                     </MotionFlex>
                                 ))}
                             </Stack>
                         </Box>
 
                         <Button
-                            bg="#40C4FF"
+                            bg="#2AB0E8"
                             color="white"
                             size="lg"
                             px={10}
-                            borderRadius="sm"
-                            _hover={{ bg: "cyan.500", scale: 1.05 }}
+                            borderRadius="none"
+                            _hover={{ bg: "#2AB0E8", scale: 1.05 }}
                             fontWeight="bold"
                             w={{ base: "full", sm: "auto" }}
                             transition="all 0.2s"
+                            width="89%" padding="2"
+                            onClick={handleComingSoon}
                         >
                             Get Started Now
                         </Button>
@@ -78,7 +94,7 @@ const SecureFuture = () => {
                         <Image
                             src={STUDENT_IMG}
                             alt="Student"
-                            borderRadius="lg"
+                            borderRadius="12px"
                             border="4px solid white"
                             maxH={{ base: "300px", md: "400px" }}
                             w="100%"
