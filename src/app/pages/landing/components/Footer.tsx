@@ -13,9 +13,9 @@ const Footer = () => {
     return (
         <Box bg="#154A99" color="white" py={{ base: 12, md: 16 }}>
             <Container maxW="container.xl">
-                <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} gap={{ base: 8, md: 12 }} mb={16}>
+                <SimpleGrid columns={{ base: 2, lg: 4 }} gap={{ base: 8, md: 12 }} mb={16}>
 
-                    <Stack gap={6}>
+                    <Stack gap={6} gridColumn={{ base: "1 / -1", lg: "auto" }}>
                         {/* Logo */}
                         <HStack gap={{ base: -2, md: -4 }} align="center">
                             <Image src="/images/uniport-crest.png" alt="Uniport Crest" h="70px" objectFit="contain" />
@@ -56,19 +56,19 @@ const Footer = () => {
                     </Stack>
 
                     <Stack gap={4} align="flex-start" justifySelf={{ base: "flex-start", lg: "end" }}>
-                        <Text fontWeight="bold" fontSize="lg">Quick Links</Text>
+                        <Text fontWeight="bold" fontSize={{ base: "md", md: "lg" }}>Quick Links</Text>
                         <Stack gap={2} align="flex-start">
                             {["Admissions", "Recent News", "Academic Calendar", "Uniport Weekly", "Payment for Transcript", "Access Digital Library"].map(link => (
-                                <Link key={link} href="#" fontSize="sm" color="gray.100" _hover={{ color: "#2AB0E8" }} onClick={handleComingSoon}>{link}</Link>
+                                <Link key={link} href="#" fontSize={{ base: "xs", md: "sm" }} color="gray.100" _hover={{ color: "#2AB0E8" }} onClick={handleComingSoon}>{link}</Link>
                             ))}
                         </Stack>
                     </Stack>
 
                     <Stack gap={4} align="flex-start" justifySelf={{ base: "flex-start", lg: "end" }}>
-                        <Text fontWeight="bold" fontSize="lg">Navigation</Text>
+                        <Text fontWeight="bold" fontSize={{ base: "md", md: "lg" }}>Navigation</Text>
                         <Stack gap={2} align="flex-start">
                             {["Home", "About", "Research", "Collaborations", "Admissions", "Updates"].map(link => (
-                                <Link key={link} href="#" fontSize="sm" color="gray.100" _hover={{ color: "#2AB0E8" }} onClick={handleComingSoon}>{link}</Link>
+                                <Link key={link} href="#" fontSize={{ base: "xs", md: "sm" }} color="gray.100" _hover={{ color: "#2AB0E8" }} onClick={handleComingSoon}>{link}</Link>
                             ))}
                         </Stack>
                     </Stack>
