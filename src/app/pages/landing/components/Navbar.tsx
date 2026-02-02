@@ -30,7 +30,17 @@ const Navbar = () => {
         });
     };
 
-    const navLinks = ["Home", "About", "Research", "Collaborations", "Admissions", "Updates"];
+    const navLinks = ["Home", "About", "Research", "Programmes", "Blog", "Library", "Resources"];
+
+    const linkMap: Record<string, string> = {
+        "Home": "#hero",
+        "About": "#about",
+        "Research": "#research",
+        "Programmes": "#programmes",
+        "Blog": "#blog",
+        "Library": "#library",
+        "Resources": "#resources"
+    };
 
     return (
         <Box as="nav" position="sticky" top={0} zIndex={100} bg="white" boxShadow="sm">
@@ -41,11 +51,18 @@ const Navbar = () => {
                     <HStack gap={4}>
                         <Image src={LOGO_SRC} alt="Uniport" h={{ base: "45px", md: "65px" }} objectFit="contain" />
                     </HStack>
-
                     {/* Desktop Nav Links */}
                     <HStack gap={8} display={{ base: "none", lg: "flex" }}>
                         {navLinks.map((item) => (
-                            <Link key={item} href="#" color="gray.600" _hover={{ color: "#2AB0E8" }} fontSize="sm" fontWeight="medium" onClick={handleComingSoon}>
+                            <Link
+                                key={item}
+                                href={linkMap[item]}
+                                color="gray.600"
+                                _hover={{ color: "#2AB0E8" }}
+                                fontSize="sm"
+                                fontWeight="medium"
+                                onClick={(e) => linkMap[item] === "#" && handleComingSoon(e)}
+                            >
                                 {item}
                             </Link>
                         ))}
@@ -116,7 +133,17 @@ const Navbar = () => {
                 >
                     <Stack gap={4} py={4}>
                         {navLinks.map((item) => (
-                            <Link key={item} href="#" fontSize="md" fontWeight="medium" color="gray.700" onClick={(e) => { setIsOpen(false); handleComingSoon(e); }}>
+                            <Link
+                                key={item}
+                                href={linkMap[item]}
+                                fontSize="md"
+                                fontWeight="medium"
+                                color="gray.700"
+                                onClick={(e) => {
+                                    setIsOpen(false);
+                                    if (linkMap[item] === "#") handleComingSoon(e);
+                                }}
+                            >
                                 {item}
                             </Link>
                         ))}
